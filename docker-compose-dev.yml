@@ -1,0 +1,39 @@
+version: '3.5'
+
+networks:
+  secondlife-network-dev:
+    driver: bridge
+
+volumes: # add this section
+  secondlife-pg-volume-dev:
+  secondlife-redis-volume-dev:
+
+services:
+  db:
+    container_name: secondlife-database-pg-dev
+    image: postgres:15.2
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - secondlife-network-dev
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - secondlife-pg-volume-dev:/var/lib/pg/data
+    ports:
+      - ${DB_PORT}:5432
+  redis:
+    container_name: secondlife-redis-dev
+    image: redis:7.2.4
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - secondlife-network-dev
+    volumes:
+      - secondlife-redis-volume-dev:/data
+    ports:
+      - ${REDIS_PORT}:6379
