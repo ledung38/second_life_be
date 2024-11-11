@@ -11,8 +11,6 @@ import { PermissionData } from './data/permission-data';
 import { RoleData } from './data/role-data';
 import { adminCodeServiceData, DefaultAdminData } from './data/user-data';
 import { seedingEntity } from './seeding-utils';
-import { Token } from 'src/entities/token.entity';
-import { TokenData } from './data/token-data';
 
 const PermissionAdminRoleCode = [...Object.values(UserAction), ...Object.values(UploadAction)];
 
@@ -46,8 +44,6 @@ const seedingRolePermission = async (permissionCodes, roleCode) => {
 
 const defaultSeeding = async () => {
   await connectSource();
-
-  await seedingEntity(Token, TokenData, 'code');
 
   await seedingEntity(Permission, PermissionData, 'code');
 

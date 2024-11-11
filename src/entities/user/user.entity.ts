@@ -1,4 +1,5 @@
 import { EntityNameConst } from 'src/constant/entity-name';
+import { Gender } from 'src/constant/enum-common';
 import { DBColumn } from 'src/decorator/swagger.decorator';
 import { StringUtil } from 'src/utils/string';
 import { BeforeInsert, BeforeUpdate, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
@@ -35,6 +36,78 @@ export class User extends AbstractTimeEntity {
     nullable: true,
   })
   name: string;
+
+  @DBColumn({
+    name: 'email',
+    type: 'varchar',
+    nullable: true,
+    unique: true,
+  })
+  email: string;
+
+  @DBColumn({
+    name: 'phone_number',
+    type: 'int',
+    nullable: true,
+  })
+  phoneNumber: number;
+
+  @DBColumn({
+    name: 'date_of_birth',
+    type: 'date',
+    nullable: true,
+  })
+  dateOfBirth: string;
+
+  @DBColumn({
+    name: 'description',
+    type: 'varchar',
+    nullable: true,
+  })
+  description: string;
+
+  @DBColumn({
+    name: 'gender',
+    type: 'enum',
+    enum: Gender,
+    nullable: true,
+  })
+  gender: Gender;
+
+  @DBColumn({
+    name: 'address',
+    type: 'varchar',
+    nullable: true,
+  })
+  fullAddress: string;
+
+  @DBColumn({
+    name: 'house_street',
+    type: 'varchar',
+    nullable: true,
+  })
+  houseStreet: string;
+
+  @DBColumn({
+    name: 'ward',
+    type: 'varchar',
+    nullable: true,
+  })
+  ward: string;
+
+  @DBColumn({
+    name: 'district',
+    type: 'varchar',
+    nullable: true,
+  })
+  district: string;
+
+  @DBColumn({
+    name: 'city',
+    type: 'varchar',
+    nullable: true,
+  })
+  city: string;
 
   @DBColumn({
     name: 'avatar',
