@@ -1,4 +1,5 @@
 import { EntityNameConst } from 'src/constant/entity-name';
+import { Gender } from 'src/constant/enum-common';
 import { MigrationConst } from 'src/constant/migration';
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
@@ -12,6 +13,16 @@ export class CreateUserTable1718354937399 implements MigrationInterface {
       MigrationConst.varcharColumn('username', { isNullable: true, isUnique: true }),
       MigrationConst.varcharColumn('password', { isNullable: true }),
       MigrationConst.varcharColumn('name', { isNullable: true }),
+      MigrationConst.intColumn('phone_number', { isNullable: true }),
+      MigrationConst.enumColumn('gender', Gender, { isNullable: true }),
+      MigrationConst.dateColumn('date_of_birth', { isNullable: true }),
+      MigrationConst.varcharColumn('email', { isNullable: true, isUnique: true }),
+      MigrationConst.varcharColumn('description', { isNullable: true }),
+      MigrationConst.varcharColumn('house_street', { isNullable: true }),
+      MigrationConst.varcharColumn('ward', { isNullable: true }),
+      MigrationConst.varcharColumn('district', { isNullable: true }),
+      MigrationConst.varcharColumn('city', { isNullable: true }),
+      MigrationConst.charColumn('address', { isNullable: true }),
       MigrationConst.varcharColumn('avatar', { isNullable: true }),
       MigrationConst.varcharColumn('cover_photo', { isNullable: true }),
       MigrationConst.varcharColumn('facebook_url', { isNullable: true }),
